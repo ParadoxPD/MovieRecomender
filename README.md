@@ -24,7 +24,7 @@ Almost everyone today uses technology to stream movies and television shows. Whi
 
 - Run the ```main.py``` file in the terminal
 
-        python main.py
+        python main.py <movie_name>
 
 ## References
 
