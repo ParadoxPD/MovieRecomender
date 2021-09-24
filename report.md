@@ -75,7 +75,61 @@ One advantage of cosine similarity is its low-complexity, especially for sparse 
 
 # Results and Discussion
 
-hmmm
+After training the model with the given dataset, the model produces well enough results(recommendations) for some of the movies while for other movies the recommendations are a bit random.
+This might be happening due to noise in our dataset and one of the shortcommings of KNN model is that when a small amount of noise is introduced to the data, the results deviate a lot.
+
+**For Example**:
+
+- When ***Iron Man*** is given as the input(previous preference of the user) which is a popular movie in the recent times, the model generates the following results(recommendations): 
+  - Batman Begins (2005)
+  - Dark Knight, The (2008)
+  - Dark Knight Rises, The (2012)
+  - ***Avengers, The (2012)***
+  - Guardians of the Galaxy (2014)
+  - Inception (2010)
+  - ***Iron Man 2 (2010)***
+  - WALL·E (2008)
+  - ***Avengers: Age of Ultron (2015)***
+  - Avatar (2009)
+  
+  And to be honest, the recommendations are really great! It recognizes the movie and recommends movies belonging to the simmilar genre(action, sci-fi thriller) and which are also quite poplular. The model does a great job at recommending the movies and is able to quantify the users preferences.
+
+- But that is not always the case, as we can see when we give ***Titanic***, which is a romantic movie, as the input(previous preference of the user) which is a popular movie but is a bit old. The model generates the following results(recommendations):
+
+  - Truman Show, The (1998)
+  - Sixth Sense, The (1999)
+  - Saving Private Ryan (1998)
+  - Forrest Gump (1994)
+  - Good Will Hunting (1997)
+  - ***Men in Black (a.k.a. MIB) (1997)***
+  - Back to the Future (1985)
+  - As Good as It Gets (1997)
+  - Gladiator (2000)
+  - ***Catch Me If You Can (2002)***
+
+  As we can see, these recommendations are mostly action and thriller movies which are completely different from **Titanic** which is a popular **Romantic** movie. Here we can see the model falls apart and is unable to get good recommendations for the users preferences.
+
+- To give another example we give ***Your Name***, which is a **animated** romantic movie, as the input(previous preference of the user) which is a popular movie. The model generates the following results(recommendations):
+
+  - ***A Silent Voice (2016)***
+  - Bruce, King of Kung Fu (1980)
+  - Bruce Lee Fights Back from the Grave (1976)
+  - Dragon Bruce Lee, Part II (1981)
+  - ***Kubo and the Two Strings (2016)***
+  - Personal Shopper (2016)
+  - Sing (2016)
+  - Bloodfisted Brothers (1978)
+  - ***Finding Dory (2016)***
+  - February (2015)
+  
+  For this input, The recommendations are pretty mixed to be honest, for some recommendations it did pretty well and recommended good movies from the same genre or simmilar but for some recommendations it was not quite there and recommended some action thriller which is far from the romantic movie we preffered.
+
+From all these examples, it seems that the model is heavily favouring the **Action** and **Thriller** genre over the rest. This might have occured due to higher number of ratings for those movies and due to the noise in the data. But the model seems quite usable for most recommendations and with some fine tuning might be even better.
+
+#### Future Improvements
+
+- Adding ***Genre Correlation*** to the feature matrix might help to filter more effectively.
+- Using **Movie tags** and quantifying that data can be useful to better recommend similar items to the user based on the preferences. 
 # References
 
 - [Concepts](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)
